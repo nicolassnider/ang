@@ -1,0 +1,11 @@
+button{
+	background-color: lime;
+	border:none;
+	font-size: 2rem;
+}
+
+button:hover{
+	background-color: rgb(3, 185, 3);
+	cursor:pointer;
+	color:snow;
+}
