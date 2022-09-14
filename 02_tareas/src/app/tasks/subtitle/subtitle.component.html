@@ -1,0 +1,7 @@
+<h2 class="subtitle">Task List</h2>
+<div *ngIf="tasks" class="notification is-link">
+	Tasks: {{tasks}}
+</div>
+<div *ngIf="!tasks" class="notification is-danger">
+	No available tasks
+</div>

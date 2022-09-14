@@ -2,3 +2,7 @@
 01_contador/.vscode/launch.json
 01_contador/.vscode/tasks.json
 01_contador/node_modules
+02_tareas/node_modules
+02_tareas/.vscode/extensions.json
+02_tareas/.vscode/launch.json
+02_tareas/.vscode/tasks.json
