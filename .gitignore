@@ -1,8 +1,15 @@
+01_contador/.vscode
 01_contador/.vscode/extensions.json
 01_contador/.vscode/launch.json
 01_contador/.vscode/tasks.json
 01_contador/node_modules
 02_tareas/node_modules
+02_tareas/.vscode
 02_tareas/.vscode/extensions.json
 02_tareas/.vscode/launch.json
-02_tareas/.vscode/tasks.json
+02_tareas/.vscode/task
+03_pokeapp/node_modules
+03_pokeapp/.vscode
+03_pokeapp/.vscode/extensions.json
+03_pokeapp/.vscode/launch.json
+03_pokeapp/.vscode/task
