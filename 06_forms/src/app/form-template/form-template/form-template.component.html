@@ -1,0 +1,97 @@
+<form
+	(ngSubmit)="add()"
+	#formTemplate="ngForm"
+	autocomplete="off"
+	class="form-group container"
+>
+	<div
+		*ngIf="formTemplate.invalid && formTemplate.touched"
+		class="alert alert-danger d-flex align-items-center"
+		role="alert"
+	>
+		<i class="bi bi-exclamation-circle"></i>
+		Invalid Form
+	</div>
+	<div>
+		<label for="project">Project</label>
+		<input
+			class="form-control"
+			id="project"
+			maxlength="15"
+			minlength="3"
+			name="project"
+			[(ngModel)]="initialState.project"
+			placeholder="Project name"
+			type="text"
+			required
+		/>
+	</div>
+	<div>
+		<label for="time">Time(hours)</label>
+		<input
+			class="form-control"
+			id="time"
+			name="time"
+			[(ngModel)]="initialState.time"
+			placeholder="Set time"
+			required
+			type="number"
+			min="0"
+			max="25"
+		/>
+	</div>
+	<div>
+		<label for="stack">Stack</label>
+		<div class="row">
+			<div class="col-md-8">
+				<input
+					class="form-control"
+					id="stack"
+					name="stack"
+					[(ngModel)]="initialState.stack"
+					placeholder="Stack"
+					type="text"
+					minlength="3"
+					maxlength="15"
+				/>
+			</div>
+			<div class="col-md-4">
+				<button
+					(click)="addTech()"
+					type="button"
+					class="btn btn-success"
+				>
+					Add Tech
+				</button>
+			</div>
+			<div class="col-12 my-2">
+				<ul class="list-group list-group-horizontal">
+					<li *ngFor="let tech of techs" class="list-group-item">
+						{{ tech }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button class="btn btn-warning mt-2 w-100" type="submit">Add</button>
+	</div>
+</form>
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Project</th>
+				<th scope="col">Time</th>
+				<th scope="col">Stack</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let project of projects">
+				<th scope="row">{{ project.project }}</th>
+				<td>{{ project.time }}</td>
+				<td>{{ project.stack }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

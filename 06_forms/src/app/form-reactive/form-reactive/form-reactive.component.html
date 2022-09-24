@@ -1,0 +1,97 @@
+<form
+	(ngSubmit)="addProject()"
+	[formGroup]="reactiveForm"
+	autocomplete="off"
+	class="form-group container"
+>
+	<div
+		*ngIf="validate()"
+		class="alert alert-danger d-flex align-items-center"
+		role="alert"
+	>
+		<i class="bi bi-exclamation-circle"></i>
+		Invalid Form
+	</div>
+	<!-- <pre>{{ reactiveForm.valid |json }}</pre> -->
+	<div>
+		<label for="projectR">Project</label>
+		<input
+			class="form-control"
+			formControlName="projectR"
+			id="projectR"
+			maxlength="15"
+			minlength="3"
+			name="projectR"
+			placeholder="Project name reactive"
+			type="text"
+		/>
+	</div>
+	<div>
+		<label for="timeR">Time(hours)</label>
+		<input
+			class="form-control"
+			formControlName="timeR"
+			id="timeR"
+			name="timeR"
+			placeholder="Set time reactive"
+			type="number"
+			min="1"
+			max="25"
+		/>
+	</div>
+	<div>
+		<label for="stackR">Stack</label>
+		<div class="row">
+			<div class="col-md-8">
+				<input
+					class="form-control"
+					[formControl]="stackR"
+					id="stackR"
+					name="stackR"
+					placeholder="Stack reactive"
+					type="text"
+				/>
+			</div>
+			<div class="col-md-4">
+				<button
+					(click)="addTech()"
+					type="button"
+					class="btn btn-success"
+				>
+					Add Tech
+				</button>
+			</div>
+			<div class="col-12 my-2">
+				<ul class="list-group list-group-horizontal">
+					<li
+						*ngFor="let stack of stacksR.value"
+						class="list-group-item"
+					>
+						{{ stack }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button class="btn btn-warning mt-2 w-100" type="submit">Add</button>
+	</div>
+</form>
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Project</th>
+				<th scope="col">Time</th>
+				<th scope="col">Stack</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let project of projects">
+				<th scope="row">{{ project.projectR }}</th>
+				<td>{{ project.timeR }}</td>
+				<td>{{ project.stackR }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
