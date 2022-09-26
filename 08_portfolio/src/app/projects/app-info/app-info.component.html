@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-12 col-md-4">
+		<img
+			class="img-thumbnail rounded"
+			[src]="projectData.img"
+			[alt]="projectData.name"
+		/>
+		<h2>{{ projectData.name }}</h2>
+		<div>
+			<a
+				[charset]=""
+				[href]="projectData.url"
+				class="btn btn-warning w-100"
+				>Open app</a
+			>
+		</div>
+		<div>
+			<a
+				target="_blank"
+				class="github-button btn btn-warning w-100 mt-1"
+				href="https://github.com/nicolassnider/ang"
+				data-icon="octicon-star"
+				aria-label="Star nicolassnider/ang on GitHub"
+				>Star on GitHub</a
+			>
+		</div>
+	</div>
+
+	<div class="col-12 col-md-8">
+		<h2>App description</h2>
+		<hr />
+		<p>{{ projectData.description }}</p>
+		<h2>Technologies</h2>
+		<hr />
+		<div class="list-group">
+			<span class="list-group-item list-group-item-action"> asdf </span>
+		</div>
+
+		<div class="list-group">
+			<span
+				*ngFor="let tech of projectData.projectStack"
+				class="list-group-item list-group-item-action mt-2"
+			>
+				{{ tech }}
+			</span>
+		</div>
+		<button class="btn btn-info mt-2 w-100" (click)="backToProjects()">
+			Back to projects
+		</button>
+		<h3>Features</h3>
+		<ul>
+			<li *ngFor="let feature of projectData.features">
+				{{ feature }}
+			</li>
+		</ul>
+	</div>
+</div>
+<pre>{{ projectData | json }}</pre>
