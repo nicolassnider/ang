@@ -19,6 +19,7 @@
 05_rxjs-directivas/.vscode/extensions.json
 05_rxjs-directivas/.vscode/launch.json
 05_rxjs-directivas/.vscode/tasks.json
+09_rest_mean/node_modules/*
 09_rest_mean/node_modules/.package-lock.json
 09_rest_mean/node_modules/.bin/nodemon
 09_rest_mean/node_modules/.bin/nodemon.cmd
@@ -307,3 +308,4 @@
 09_rest_mean/node_modules/undefsafe/README.md
 09_rest_mean/node_modules/undefsafe/.github/workflows/release.yml
 09_rest_mean/node_modules/undefsafe/lib/undefsafe.js
+09_rest_mean/.env
