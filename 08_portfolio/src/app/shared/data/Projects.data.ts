@@ -42,7 +42,7 @@ export const projects: any[] = [
 		projectStack: ['05_TBD', '05_TBD2'],
 		description:
 			'RxJs & directives demostration using Angular Framework and Bootstrap 5',
-		url: 'https://jocular-baklava-44a44e.netlify.app/',
+		url: 'https://stalwart-donut-5deaeb.netlify.app',
 		repo:'https://github.com/nicolassnider/ang/tree/master/05_rxjs-directivas'
 	},
 	{
