@@ -11,7 +11,7 @@ import { SharedModuleModule } from './shared/components/shared.module';
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,SharedModuleModule
   ],
   providers: [],
