@@ -8,8 +8,7 @@ authRouter.post(
 	'/login',
 	[
 		check('eMail', 'invalid email').isEmail(),
-		check('password', 'invalid password').isLength({ min: 6 }),
-		check('userName', 'invalid username').isLength({ min: 6 }),
+		check('password', 'invalid password').isLength({ min: 6 }),		
 		validationErrors
 	],
 	loginUser

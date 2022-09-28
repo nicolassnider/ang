@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-login-screen',
@@ -10,23 +11,28 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginScreenComponent implements OnInit {
 	loginForm: FormGroup = this.fb.group({
-		eMail: ['example@mail.com', [Validators.required, Validators.email]],
-		password: ['123456', [Validators.required, Validators.minLength(6)]],
+		eMail: ['adminuser@mail.com', [Validators.required, Validators.email]],
+		password: ['123456789', [Validators.required, Validators.minLength(6)]],
 	});
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
-		private authServive: AuthService
+		private authService: AuthService
 	) {}
 
 	ngOnInit(): void {}
 
 	login() {
-		this.authServive
-			.login(this.loginForm.value)
-			.subscribe((res: any) => {
-				console.log(res);
-			});
+		this.authService.login(this.loginForm.value).subscribe((res: any) => {
+			if (res===true) {
+				localStorage.setItem(
+					'user',
+					JSON.stringify(this.authService.user)
+				);
+			} else {
+				Swal.fire({title:'Error...',icon:'error',text:res});
+			}
+		});
 		//this.router.navigateByUrl('/task');
 	}
 }
