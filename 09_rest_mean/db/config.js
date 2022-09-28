@@ -4,7 +4,7 @@ const connectDB = async ()=>{
 
 	try {
 		await mongoose.connect(
-			`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.mjhiupz.mongodb.net/${process.env.MONGO_DB}`
+			process.env.DB_CONNECTION_STRING,
 		);
 		console.log('connected to db');
 	} catch (error) {
