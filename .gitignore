@@ -309,3 +309,4 @@
 09_rest_mean/node_modules/undefsafe/.github/workflows/release.yml
 09_rest_mean/node_modules/undefsafe/lib/undefsafe.js
 09_rest_mean/.env
+10_mean-front/.env
