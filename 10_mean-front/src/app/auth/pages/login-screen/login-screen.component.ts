@@ -29,10 +29,11 @@ export class LoginScreenComponent implements OnInit {
 					'user',
 					JSON.stringify(this.authService.user)
 				);
+				this.router.navigateByUrl('/task');
 			} else {
 				Swal.fire({title:'Error...',icon:'error',text:res});
 			}
 		});
-		//this.router.navigateByUrl('/task');
+		
 	}
 }

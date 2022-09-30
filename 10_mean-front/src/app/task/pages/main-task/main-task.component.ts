@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main-task',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-task.component.css']
 })
 export class MainTaskComponent implements OnInit {
-
-  constructor() { }
+  user: any;
+  constructor(private authService: AuthService) { this.user = JSON.parse(localStorage.getItem(`user`)||``)}
 
   ngOnInit(): void {
   }

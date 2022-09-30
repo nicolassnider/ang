@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthService {
-	private _user: any;
+	_user: any;
 	get user() {
 		return this._user;
 	}
-	constructor(private httpClient: HttpClient) {}
+	constructor(private httpClient: HttpClient) { }
 	login(data: { eMail: string; password: string }) {
 		return this.httpClient
 			.post<any>('http://localhost:3000/auth/login', data)
@@ -30,5 +30,13 @@ export class AuthService {
 				map((res) => res.ok),
 				catchError((err) => of(err.error.msg))
 			);
+	}
+	validateToken(): Observable<boolean> {
+		const {token} = JSON.parse(localStorage.getItem("user")!);
+		if (token) {
+			return new Observable((subscriber) => { subscriber.next(true) })
+		} else {
+			return new Observable((subscriber) => { subscriber.next(false) })
+		}
 	}
 }
