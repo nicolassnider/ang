@@ -1,12 +1,12 @@
 <div class="row">
-	<form class="col s12">
+	<form ngSubmit="register()" class="col s12" [formGroup]="registerForm">
 		<div class="row">
 			<div class="col-s12">
 				<h2>Register</h2>
 				<hr />
 			</div>
 			<div class="input-field col s12">
-				<input id="userName" type="text" class="validate" />
+				<input formControlName="userName" id="userName" type="text" class="validate" />
 				<label for="userName">UserName</label>
 				<span
 					class="helper-text"
@@ -17,7 +17,7 @@
 				</span>
 			</div>
 			<div class="input-field col s12">
-				<input id="eMail" type="email" class="validate" />
+				<input formControlName="eMail" id="eMail" type="email" class="validate" />
 				<label for="eMail">Email</label>
 				<span
 					class="helper-text"
@@ -26,7 +26,7 @@
 				></span>
 			</div>
 			<div class="input-field col s12">
-				<input id="password" type="password" class="validate" />
+				<input formControlName="password" id="password" type="password" class="validate" />
 				<label for="password">Password</label>
 				<span
 					class="helper-text"
@@ -37,7 +37,7 @@
 				</span>
 			</div>
 			<div class="input-field col s12">
-				<input id="password2" type="password" class="validate" />
+				<input formControlName="password2" id="password2" type="password" class="validate" />
 				<label for="password2">Confirm password</label>
 				<span
 					class="helper-text"

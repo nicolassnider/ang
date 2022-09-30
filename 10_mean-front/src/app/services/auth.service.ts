@@ -31,6 +31,25 @@ export class AuthService {
 				catchError((err) => of(err.error.msg))
 			);
 	}
+	register(data:any){
+		return this.httpClient
+		.post<any>('http://localhost:3000/auth/register',data)
+		.pipe(
+			tap((res)=>{
+				if(res.ok===true){
+					this._user={
+						id:res.id,
+						userName:res.userName,
+						email:res.email
+					};
+				} else{
+					this._user=null;
+				}
+			}),
+			map((res)=>res.ok),
+			catchError((err)=>of(err.error.msg))
+		);
+	}
 	validateToken(): Observable<boolean> {
 		const {token} = JSON.parse(localStorage.getItem("user")!);
 		if (token) {
