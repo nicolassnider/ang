@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthService {
+	private baseUrl= environment.baseUrl;
 	_user: any;
 	get user() {
 		return this._user;
@@ -14,7 +16,7 @@ export class AuthService {
 	constructor(private httpClient: HttpClient) { }
 	login(data: { eMail: string; password: string }) {
 		return this.httpClient
-			.post<any>('http://localhost:3000/auth/login', data)
+			.post<any>(`${this.baseUrl}/auth/login`, data)
 			.pipe(
 				tap((res) => {
 					if (res.ok === true) {
@@ -33,7 +35,7 @@ export class AuthService {
 	}
 	register(data:any){
 		return this.httpClient
-		.post<any>('http://localhost:3000/auth/register',data)
+		.post<any>(`${this.baseUrl}/auth/register`,data)
 		.pipe(
 			tap((res)=>{
 				if(res.ok===true){

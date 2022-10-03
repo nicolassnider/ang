@@ -1,4 +1,3 @@
-const { validationResult } = require('express-validator');
 const taskModel = require('../models/task');
 const createTask = async (req, res) => {
 	const { name, description } = req.body;

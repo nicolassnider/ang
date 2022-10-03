@@ -1,3 +1,36 @@
-<pre>
-    {{user|json}}
-</pre>
+<nav>
+	<div class="nav-wrapper">
+		<span class="brand-logo">MEAN tasks app</span>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li>
+				<button (click)="logout()" class="btn waves-effect waves-effect-light blue">
+					Logout
+				</button>
+			</li>
+		</ul>
+	</div>
+</nav>
+<div class="container">
+	<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Created at</th>
+			  <th>Update</th>
+			  <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let task of tasks">
+			<td>{{task.name}}</td>
+			<td>{{task.description}}</td>
+			<td>{{task.createdAt}}</td><!-- use date pipes -->
+			<td><button class="btn waves-effect waves-light amber darken-4">Update</button></td>
+			<td><button (click)="delete(task._id)" class="btn waves-effect waves-light red">Delete</button></td>
+		  </tr>
+        </tbody>
+      </table>
+</div>
+
