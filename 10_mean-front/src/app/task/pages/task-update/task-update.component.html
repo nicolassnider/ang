@@ -1,0 +1,31 @@
+<div class="container">
+	<form (ngSubmit)="update()" [formGroup]="taskUpdateForm">
+		<div class="row">
+			<div class="input-field col s6">
+				<input
+					formControlName="taskToUpdateName"
+					id="create"
+					type="text"
+					class="validate"
+					[value]="taskToUpdate.name"
+				/><label for="create">New Task</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<input
+					formControlName="taskToUpdateDescription"
+					id="createDescription"
+					type="text"
+					class="validate"
+					[value]="taskToUpdate.description"
+				/><label for="createDescription">Description</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<button class="btn waves-effect waves-light blue">Save</button>
+			</div>
+		</div>
+	</form>
+</div>

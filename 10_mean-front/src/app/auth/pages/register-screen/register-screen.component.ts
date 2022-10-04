@@ -24,9 +24,7 @@ export class RegisterScreenComponent implements OnInit {
 	) { }
 	ngOnInit(): void { }
 	register() {
-		console.log("register")
 		const { password, password2 } = this.registerForm.value;
-		console.log(password,password)
 		if (password === password2) {
 			this.authService.register(this.registerForm.value).subscribe((res: any) => {
 				if (res === true) {

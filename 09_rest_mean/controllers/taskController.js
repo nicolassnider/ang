@@ -24,6 +24,15 @@ const getTasks = async (req, res) => {
 		return res.status(404).json({ msg: 'not found' });
 	}
 };
+const getTask = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const task = await taskModel.findById(id);
+		return res.status(200).json({ msg: 'task', ok: true, task });
+	} catch (error) {
+		return res.status(404).json({ msg: 'not found', ok: false });
+	}
+}
 const updateTask = async (req, res) => {
 	const { id } = req.params;
 	const { name, description } = req.body;
@@ -47,4 +56,4 @@ const deleteTask = async (req, res) => {
 		return res.status(404).json({ msg: 'not found', ok: false });
 	}
 };
-module.exports = { createTask, getTasks, updateTask, deleteTask };
+module.exports = { createTask, getTasks, updateTask, deleteTask, getTask };

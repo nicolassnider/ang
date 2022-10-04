@@ -60,7 +60,7 @@
 				<td>{{ task.createdAt }}</td>
 				<!-- use date pipes -->
 				<td>
-					<button class="btn waves-effect waves-light amber darken-4">
+					<button (click)="update(task)" class="btn waves-effect waves-light amber darken-4">
 						Update
 					</button>
 				</td>

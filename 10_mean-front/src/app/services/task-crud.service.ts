@@ -27,4 +27,11 @@ export class TaskCrudService {
 		return this.httpClient.post<any>(`${this.baseUrl}/task`,{name:data.newTaskName!,description:data.newTaskDescription!},{headers})
 
 	}
+	getTaskById(id:string){
+		const headers={'x-auth-token':this.user.token}
+		return this.httpClient.get<any>(`${this.baseUrl}/task/${id}`,{headers})
+	}
+	update(){
+
+	}
 }

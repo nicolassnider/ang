@@ -5,6 +5,7 @@ const {
 	getTasks,
 	updateTask,
 	deleteTask,
+	getTask,
 } = require('../controllers/taskController');
 const validationErrors = require('../middlewares/validationErrors');
 const verifyToken = require('../middlewares/verifyToken');
@@ -20,6 +21,7 @@ taskRouter.post(
 	createTask
 );
 taskRouter.get('/', [verifyToken], getTasks);
+taskRouter.get('/:id', [verifyToken], getTask);
 taskRouter.put(
 	'/:id',
 	[
