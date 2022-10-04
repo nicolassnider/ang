@@ -3,7 +3,10 @@
 		<span class="brand-logo">MEAN tasks app</span>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li>
-				<button (click)="logout()" class="btn waves-effect waves-effect-light blue">
+				<button
+					(click)="logout()"
+					class="btn waves-effect waves-effect-light blue"
+				>
 					Logout
 				</button>
 			</li>
@@ -11,26 +14,65 @@
 	</div>
 </nav>
 <div class="container">
+	<form (ngSubmit)="create()" [formGroup]="taskCreateForm">
+		<div class="row">
+			<div class="input-field col s6">
+				<input
+					formControlName="newTaskName"
+					id="create"
+					type="text"
+					class="validate"
+				/><label for="create">New Task</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<input
+					formControlName="newTaskDescription"
+					id="createDescription"
+					type="text"
+					class="validate"
+				/><label for="createDescription">Description</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<button class="btn waves-effect waves-light blue">Save</button>
+			</div>
+		</div>
+	</form>
+
 	<table>
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Created at</th>
-			  <th>Update</th>
-			  <th>Delete</th>
-          </tr>
-        </thead>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Created at</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
 
-        <tbody>
-          <tr *ngFor="let task of tasks">
-			<td>{{task.name}}</td>
-			<td>{{task.description}}</td>
-			<td>{{task.createdAt}}</td><!-- use date pipes -->
-			<td><button class="btn waves-effect waves-light amber darken-4">Update</button></td>
-			<td><button (click)="delete(task._id)" class="btn waves-effect waves-light red">Delete</button></td>
-		  </tr>
-        </tbody>
-      </table>
+		<tbody>
+			<tr *ngFor="let task of tasks">
+				<td>{{ task.name }}</td>
+				<td>{{ task.description }}</td>
+				<td>{{ task.createdAt }}</td>
+				<!-- use date pipes -->
+				<td>
+					<button class="btn waves-effect waves-light amber darken-4">
+						Update
+					</button>
+				</td>
+				<td>
+					<button
+						(click)="delete(task._id)"
+						class="btn waves-effect waves-light red"
+					>
+						Delete
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
-

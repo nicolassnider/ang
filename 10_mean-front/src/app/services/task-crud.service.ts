@@ -22,4 +22,9 @@ export class TaskCrudService {
 		const headers={'x-auth-token':this.user.token};
 		return this.httpClient.delete<any>(`${this.baseUrl}/task/${id}`,{headers})
 	}
+	create(data:any){
+		const headers={'x-auth-token':this.user.token}
+		return this.httpClient.post<any>(`${this.baseUrl}/task`,{name:data.newTaskName!,description:data.newTaskDescription!},{headers})
+
+	}
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TaskCrudService } from 'src/app/services/task-crud.service';
 
@@ -10,7 +11,11 @@ import { TaskCrudService } from 'src/app/services/task-crud.service';
 export class MainTaskComponent implements OnInit {
 	user: any;
 	tasks: Array<any> = [];
-	constructor(private crudService: TaskCrudService,private router:Router) { this.user = this.crudService.user }
+	taskCreateForm: FormGroup = this.fb.group({
+		newTaskName: ['', [Validators.required]],
+		newTaskDescription: ['', [Validators.required, Validators.minLength(6)]],
+	});
+	constructor(private crudService: TaskCrudService,private router:Router,private fb:FormBuilder) { this.user = this.crudService.user }
 
 	ngOnInit(): void {
 		this.user = this.crudService.user;
@@ -22,6 +27,13 @@ export class MainTaskComponent implements OnInit {
 	}
 	delete(id:string){
 		this.crudService.delete(id).subscribe(res=>{
+			this.crudService.read().subscribe(res=>{
+				this.tasks=res.tasks;
+			})
+		})
+	}
+	create(){
+		this.crudService.create(this.taskCreateForm.value).subscribe(res=>{
 			this.crudService.read().subscribe(res=>{
 				this.tasks=res.tasks;
 			})
