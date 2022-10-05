@@ -44,6 +44,9 @@ export class TaskUpdateComponent implements OnInit {
 		});
 	}
 	update() {
-		/* update task */
+		console.log(this.id)
+		this.crudService.update(this.taskUpdateForm.value,this.id).subscribe((res) => {
+			this.router.navigateByUrl(`/task`);
+		});
 	}
 }
