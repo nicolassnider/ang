@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginScreenComponent implements OnInit {
 	loginForm: FormGroup = this.fb.group({
-		eMail: ['adminuser@mail.com', [Validators.required, Validators.email]],
-		password: ['123456789', [Validators.required, Validators.minLength(6)]],
+		eMail: ['', [Validators.required, Validators.email]],
+		password: ['', [Validators.required, Validators.minLength(6)]],
 	});
 	constructor(
 		private fb: FormBuilder,
@@ -34,6 +34,6 @@ export class LoginScreenComponent implements OnInit {
 				Swal.fire({title:'Error...',icon:'error',text:res});
 			}
 		});
-		
+
 	}
 }

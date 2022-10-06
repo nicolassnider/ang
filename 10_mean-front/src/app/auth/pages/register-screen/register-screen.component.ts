@@ -14,35 +14,41 @@ export class RegisterScreenComponent implements OnInit {
 		eMail: ['', [Validators.required]],
 		userName: ['', [Validators.required]],
 		password: ['', [Validators.required]],
-		password2: ["", [Validators.required]]
+		password2: ['', [Validators.required]],
 	});
 
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
 		private authService: AuthService
-	) { }
-	ngOnInit(): void { }
+	) {}
+	ngOnInit(): void {}
 	register() {
 		const { password, password2 } = this.registerForm.value;
 		if (password === password2) {
-			this.authService.register(this.registerForm.value).subscribe((res: any) => {
-				if (res === true) {
-					localStorage.setItem(
-						'user',
-						JSON.stringify(this.authService.user)
-					);
-					this.router.navigateByUrl('/task');
-				} else {
-					Swal.fire({ title: 'Error...', icon: 'error', text: res });
-				}
-			});
-
+			this.authService
+				.register(this.registerForm.value)
+				.subscribe((res: any) => {
+					if (res === true) {
+						localStorage.setItem(
+							'user',
+							JSON.stringify(this.authService.user)
+						);
+						this.router.navigateByUrl('/task');
+					} else {
+						Swal.fire({
+							title: 'Error...',
+							icon: 'error',
+							text: res,
+						});
+					}
+				});
 		} else {
-			Swal.fire({ title: 'Error...', icon: 'error', text: "passwords does not match" });
+			Swal.fire({
+				title: 'Error...',
+				icon: 'error',
+				text: 'passwords does not match',
+			});
 		}
-
 	}
-
-
 }
