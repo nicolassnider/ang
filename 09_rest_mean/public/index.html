@@ -4,11 +4,21 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Acceso denegado</title>
+	<title>Access denied</title>
 	<link rel="stylesheet" href="styles/style.css">
+
 </head>
 <body>
-	<h1>Acceso denegado</h1>
+	<h1>Access denied</h1>
 	<hr>
+	<p id="swagger-data"></p>
+	<script type="text/javascript">
+		const {host} = window.location;
+		console.log(host)
+		var paragraph = document.getElementById("swagger-data");
+		var text = document.createTextNode(`You are not allowed to access this resource. For API information please visit ${host}/docs`);
+
+paragraph.appendChild(text);
+	</script>
 </body>
 </html>
