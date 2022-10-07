@@ -31,9 +31,12 @@ app.use(
 					{
 						url: 'http://localhost:3000',
 					},
+					{
+						url: 'https://taskappmean.herokuapp.com/',
+					},
 				],
 			},
-			apis: [`${path.join(__dirname,'./routes/*.js')}`],
+			apis: [`${path.join(__dirname, './routes/*.js')}`],
 		})
 	)
 );
