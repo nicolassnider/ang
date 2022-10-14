@@ -1,0 +1,33 @@
+existen 3 formas para compartir información entre componentes
+
+- input/output: un padre comparte por un atributo tipo input a un hijo. para compartir al padre utiliza un
+atributo output.
+si necesito pasar información a un hijo de un hijo de un hijo, se debe crear un atributo
+en cada componente intermedio. cadena de input/output
+deja de ser reutilizable
+
+- usando servicio. se crea una propiedad y se crean dos métodos: uno para obtener la información y otro
+para compartirla. los componentes hacen el get y obtienen la información.
+los componentes no saben cuándo está lista la información y cuándo la información cambia.
+
+- programación reactiva. utilizando observables. se crea un observable y se suscribe a él.
+
+una buena práctica es el CoreModuile. se importa en el app.module y se exporta en el core.module.
+son servicios que solamente tienen una única instancia, la información se obtiene siempre en el mismo
+-----------------------------------------------------------
+
+diferentes tipos de observable
+canales donde se emiten eventos y cada evento tiene información asociada
+subject: no tiene posibilidad de compartir información emitida.
+si tengo dos componentes que escuchan al observable, el primer componente también emite información
+el segundo recibe información.
+si el primero todavía no ha sido creado la información se perdió.
+
+behaviorSubject: tiene un objeto default. es lo que el segundo componente va a contener
+
+data$ nomenclartura para observable
+
+
+
+
+
